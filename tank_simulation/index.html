@@ -1,0 +1,51 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Simulation</title>
+	<script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
+    <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.fusion.js"></script>
+  
+	<script type="text/javascript" src="tank_animation_simulation.js"></script>
+	<script type="text/javascript" src='../basic_page/jquery.min.js'></script>
+  
+    
+    <script>
+    	
+    	function data_request_timer(delay){
+			window.setInterval(get_data, delay); //timer for initiating ajax request 
+
+		}
+
+		function get_data(){
+			console.log("fetching data from server");
+
+			$.get("read_data.php?widget=info", 
+			function(data, status){
+		    	document.getElementById("info").innerHTML = data;
+		  	});
+
+		}
+
+    </script>
+
+</head>
+<body onload="data_request_timer(1000)">
+
+<div align='center'>
+    <div style='margin-top:30px'>
+         <p id='info'></p>
+    </div>
+    
+    <div style='margin-top:30px'>
+	    <div id='chart-container'>Tải lại trang nếu animation không hoạt động</div>
+    </div>
+
+    <div style='margin-top:30px; width:50%;'>
+	    <p>Trong mô phỏng này, thông tin giây thời gian của máy chủ được đưa vào hoạt ảnh của bình nước. Xem cách tinh chỉnh các tham số trong tệp tank_animation_simulation.js để thay đổi hình thức và hoạt động của nước trong bình</p>
+    </div>
+</div>
+
+
+</body>
+</html>
